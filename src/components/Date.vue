@@ -1,0 +1,23 @@
+<script setup lang="ts">
+type Props = {
+  date: string;
+}
+const props = defineProps<Props>();
+</script>
+
+<template>
+  <span clas="date">
+    <NuxtImg src="/clock.svg" alt="" width="16" height="16" loading="eager" />
+    {{ date }}
+  </span>
+</template>
+
+<style>
+.date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+}
+</style>
