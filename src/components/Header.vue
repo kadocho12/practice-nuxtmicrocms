@@ -1,10 +1,10 @@
 <script setup lang="ts">
-
+import Menu from './Menu.vue';
 </script>
 
 <template>
   <header class="header">
-    <a href="/" class="logoLink">
+    <NuxtLink href="/" class="logoLink">
       <NuxtImg
         src="/logo.svg"
         alt="SIMPLE"
@@ -13,18 +13,19 @@
         height="133"
         priority
       />
-    </a>
+    </NuxtLink>
+    <Menu />
   </header>
 </template>
 
-<style>
+<style scoped>
 .header {
   position: absolute;
   padding: 16px 24px 8px;
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 }
 

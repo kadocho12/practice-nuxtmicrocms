@@ -12,7 +12,7 @@ const props = defineProps<Props>();
   </a>
 </template>
 
-<style>
+<style scoped>
 .button {
   display: block;
   padding: 20px 40px;

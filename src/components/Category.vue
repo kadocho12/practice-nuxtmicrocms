@@ -11,7 +11,7 @@ const props = defineProps<Props>();
   <span class="tag">{{ category.name }}</span>
 </template>
 
-<style>
+<style scoped>
 .tag {
   background-color: var(--color-bg-sub);
   padding: 4px 12px;

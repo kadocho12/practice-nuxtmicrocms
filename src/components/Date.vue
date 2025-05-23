@@ -12,7 +12,7 @@ const props = defineProps<Props>();
   </span>
 </template>
 
-<style>
+<style scoped>
 .date {
   display: flex;
   align-items: center;

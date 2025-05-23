@@ -17,7 +17,7 @@
   </footer>
 </template>
 
-<style>
+<style scoped>
 .footer {
   padding: 16px 24px;
   text-align: center;

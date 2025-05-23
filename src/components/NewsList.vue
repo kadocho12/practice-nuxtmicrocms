@@ -14,7 +14,7 @@ const props = defineProps<Props>();
   <p v-if="news.length === 0">記事がありません。</p>
   <ul v-else>
     <li v-for="article in props.news" :key="article.id" class="list">
-      <div class="link">
+      <NuxtLink :to="`/news/${article.id}`" class="link">
         <NuxtImg
           class="image"
           src="/no-image.png"
@@ -29,12 +29,12 @@ const props = defineProps<Props>();
             <Date :date="article.publishedAt ?? article.createdAt" />
           </dd>
         </dl>
-      </div>
+      </NuxtLink>
     </li>
   </ul>
 </template>
 
-<style>
+<style scoped>
 .list {
   border-bottom: 1px solid var(--color-border-light);
 }
