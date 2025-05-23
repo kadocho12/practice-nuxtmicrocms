@@ -1,44 +1,9 @@
 <script setup lang="ts">
+import { getMembersList } from '../../utils/microcms';
 definePageMeta({
   layout: 'members'
 });
-const data = {
-  contents: [
-    {
-      id: "1",
-      image: {
-        url: "/img-member1.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "デイビッド・チャン",
-      position: "COO",
-      profile: "hogehoge"
-    },
-    {
-      id: "2",
-      image: {
-        url: "/img-member2.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "エミリー・サンダース",
-      position: "COO",
-      profile: "hogehoge"
-    },
-    {
-      id: "3",
-      image: {
-        url: "/img-member3.jpg",
-        width: 240,
-        height: 240,
-      },
-      name: "ジョン・ウィルソン",
-      position: "CTO",
-      profile: "hogehoge"
-    },
-  ]
-};
+const data = await getMembersList();
 </script>
 
 <template>

@@ -27,6 +27,17 @@ const close = () => isOpen.value = false;
 </template>
 
 <style scoped>
+.items {
+  display: flex;
+  color: #fff;
+  gap: 40px;
+}
+
+.button {
+  display: none;
+}
+
+@media (max-width: 640px) {
   .nav {
     display: none;
   }
@@ -60,4 +71,5 @@ const close = () => isOpen.value = false;
     top: 24px;
     right: 16px;
   }
+}
 </style>

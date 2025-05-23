@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Menu from './Menu.vue';
-</script>
-
 <template>
   <header class="header">
     <NuxtLink href="/" class="logoLink">

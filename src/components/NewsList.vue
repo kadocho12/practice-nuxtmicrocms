@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { News } from "@/types/microcms";
+import type { News } from "~/utils/microcms";
 import Category from "./Category.vue";
 import Date from "./Date.vue";
 

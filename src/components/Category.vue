@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Category } from '~/types/microcms';
+import type { Category } from '~/utils/microcms';
 
 type Props = {
   category: Category;

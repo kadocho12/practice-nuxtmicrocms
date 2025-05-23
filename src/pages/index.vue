@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { News } from "@/types/microcms";
+import type { News } from "~/utils/microcms";
 
 const data: { contents: News[] } = {
   contents: [
