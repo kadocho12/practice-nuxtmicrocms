@@ -1,14 +1,16 @@
 <template>
-  <div class="container">
-    <dl>
-      <dt class="title">ページが見つかりませんでした。</dt>
-      <dd class="text">
-        あなたがアクセスしようとしたページは存在しません。
-        <br />
-        URLを再度ご確認ください。
-      </dd>
-    </dl>
-  </div>
+  <NuxtLayout name="error">
+    <div class="container">
+      <dl>
+        <dt class="title">ページが見つかりませんでした。</dt>
+        <dd class="text">
+          あなたがアクセスしようとしたページは存在しません。
+          <br />
+          URLを再度ご確認ください。
+        </dd>
+      </dl>
+    </div>
+  </NuxtLayout>
 </template>
 
 <style scoped>

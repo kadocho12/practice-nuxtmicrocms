@@ -23,6 +23,14 @@ const { data, pending, error } = await useFetch<News>(
     },
   }
 );
+
+// エラーが発生した場合（存在しないIDなど）はNotFoundページを表示
+if (error.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'News not found'
+  });
+}
 </script>
 
 <template>
