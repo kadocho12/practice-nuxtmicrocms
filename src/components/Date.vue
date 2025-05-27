@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { formatDate } from '~/utils/dayjs';
+
 type Props = {
   date: string;
 }
@@ -8,7 +10,7 @@ const props = defineProps<Props>();
 <template>
   <span clas="date">
     <NuxtImg src="/clock.svg" alt="" width="16" height="16" loading="eager" />
-    {{ date }}
+    {{ formatDate(date) }}
   </span>
 </template>
 
