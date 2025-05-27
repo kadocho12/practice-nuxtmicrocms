@@ -1,29 +1,48 @@
 import { createClient } from "microcms-js-sdk";
 import type {
   MicroCMSQueries,
-  MicroCMSImage,
-  MicroCMSListContent,
 } from "microcms-js-sdk";
 
 export type Member = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
   name: string;
   position: string;
   profile: string;
-  image: MicroCMSImage;
-} & MicroCMSListContent;
+  image: {
+    url: string;
+    height: number;
+    width: number;
+  };
+};
 
 export type Category = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
   name: string;
-}
+};
 
 export type News = {
   id: string;
-  title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
   createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  title: string;
+  description: string;
+  content: string;
+  category: Category;
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
 };
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {

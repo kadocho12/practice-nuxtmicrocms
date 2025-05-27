@@ -16,6 +16,15 @@ const props = defineProps<Props>();
     <li v-for="article in props.news" :key="article.id" class="list">
       <NuxtLink :to="`/news/${article.id}`" class="link">
         <NuxtImg
+          v-if="article.thumbnail"
+          :src="article.thumbnail.url"
+          alt=""
+          class="image"
+          :width="article.thumbnail.width"
+          :height="article.thumbnail.height"
+        />
+        <NuxtImg
+          v-else
           class="image"
           src="/no-image.png"
           alt="No Image"

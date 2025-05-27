@@ -1,39 +1,23 @@
 <script setup lang="ts">
+import { NEWS_LIST_LIMIT } from "~/constants";
 import type { News } from "~/utils/microcms";
 
-const data: { contents: News[] } = {
-  contents: [
-    {
-      id: "1",
-      title: "渋谷にオフィスを移転しました",
-      category: {
-        name: "更新情報",
-      },
-      publishedAt: "2023/05/19",
-      createdAt: "2023/05/19",
+const config = useRuntimeConfig();
+const apiKey = config.public.apiKey;
+const apiDomain = config.public.apiDomain;
+const { data, pending, error } = await useFetch<{ contents: News[] }>(
+  `/api/v1/news`,
+  {
+    baseURL: `https://${apiDomain}.microcms.io`,
+    headers: {
+      'X-MICROCMS-API-KEY': apiKey,
     },
-    {
-      id: "2",
-      title: "当社CEOが業界リーダーTOP30に選出されました",
-      category: {
-        name: "更新情報",
-      },
-      publishedAt: "2023/05/19",
-      createdAt: "2023/05/19",
-    },
-    {
-      id: "3",
-      title: "テストの記事です",
-      category: {
-        name: "更新情報",
-      },
-      publishedAt: "2023/04/19",
-      createdAt: "2023/04/19",
-    },
-  ]
-}
-
-const sliceData = data.contents.slice(0, 2);
+    query: {
+      limit: NEWS_LIST_LIMIT
+    }
+    // pick: ['contents'] // contentsプロパティだけ取得する場合
+  }
+);
 </script>
 
 <template>
@@ -52,7 +36,7 @@ const sliceData = data.contents.slice(0, 2);
   </section>
   <section class="news">
     <h2 class="newsTitle">News</h2>
-    <NewsList :news="sliceData" />
+    <NewsList :news="data?.contents || []" />
     <div class="newsLink">
       <ButtonLink href="/news">もっと見る</ButtonLink>
     </div>

@@ -1,13 +1,40 @@
 <script setup lang="ts">
-import { getMembersList } from '../../utils/microcms';
+import { MEMBERS_LIST_LIMIT } from '~/constants';
+import type { Member } from '~/utils/microcms';
+
+
 definePageMeta({
   layout: 'members'
 });
-const data = await getMembersList();
+
+const config = useRuntimeConfig();
+const apiKey = config.public.apiKey;
+const apiDomain = config.public.apiDomain;
+
+const { data, pending, error } = await useFetch<{ contents: Member[] }>(
+  `/api/v1/members`,
+  {
+    baseURL: `https://${apiDomain}.microcms.io`,
+    headers: {
+      'X-MICROCMS-API-KEY': apiKey,
+    },
+    query: {
+      limit: MEMBERS_LIST_LIMIT
+    }
+    // pick: ['contents'] // contentsプロパティだけ取得する場合
+  }
+);
+
+if (error.value) {
+  console.error('データ取得エラー:', error.value);
+}
+
 </script>
 
 <template>
-  <p v-if="data.contents.length === 0" class="empty">メンバーが登録されていません。</p>
+  <p v-if="pending">読み込み中...</p>
+  <p v-else-if="error">エラーが発生しました</p>
+  <p v-else-if="!data || data.contents.length === 0" class="empty">メンバーが登録されていません。</p>
   <ul v-else>
     <li v-for="member in data.contents" :key="member.id" class="list">
       <NuxtImg
