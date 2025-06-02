@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NEWS_LIST_LIMIT } from "~/constants";
+import { TOP_NEWS_LIMIT } from "~/constants";
 import type { News } from "~/utils/microcms";
 
 const config = useRuntimeConfig();
@@ -13,7 +13,7 @@ const { data, pending, error } = await useFetch<{ contents: News[] }>(
       'X-MICROCMS-API-KEY': apiKey,
     },
     query: {
-      limit: NEWS_LIST_LIMIT
+      limit: TOP_NEWS_LIMIT
     }
     // pick: ['contents'] // contentsプロパティだけ取得する場合
   }

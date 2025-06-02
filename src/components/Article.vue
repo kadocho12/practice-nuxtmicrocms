@@ -13,8 +13,10 @@ const props = defineProps<Props>();
     <h1 class="title">{{props.data.title}}</h1>
     <p class="description">{{props.data.description}}</p>
     <div class="meta">
-      <Category :category="props.data.category" />
-      <Date :date="props.data.publishedAt ?? props.data.createdAt" />
+      <NuxtLink :to="`/news/category/${props.data.category.id}`">
+        <Category :category="props.data.category" />
+        <Date :date="props.data.publishedAt ?? props.data.createdAt" />
+      </NuxtLink>
     </div>
     <NuxtImg
       v-if="props.data.thumbnail"

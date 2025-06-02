@@ -7,12 +7,15 @@ definePageMeta({
   layout: 'news'
 });
 
+const route = useRoute();
+const id = route.params.id as string;
+
 const config = useRuntimeConfig();
 const apiKey = config.public.apiKey;
 const apiDomain = config.public.apiDomain;
 
-const { data, pending, error } = await useFetch<{ contents: News[], totalCount: number }>(
-  `/api/v1/news`,
+const { data, pending, error } = await useFetch<{ contents: News[] }>(
+  `/api/v1/news?filters=category[equals]${id}`,
   {
     baseURL: `https://${apiDomain}.microcms.io`,
     headers: {
@@ -28,5 +31,4 @@ const { data, pending, error } = await useFetch<{ contents: News[], totalCount: 
 
 <template>
   <NewsList :news="data?.contents || []" />
-  <Pagination :total-count="data?.totalCount || 0" />
 </template>
